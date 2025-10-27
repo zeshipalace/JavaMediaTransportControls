@@ -5,14 +5,14 @@ import java.io.ByteArrayOutputStream
 
 plugins {
     java
-    //`maven-publish`
-    //signing
+    `maven-publish`
+    signing
     id("com.vanniktech.maven.publish") version "0.28.0"
 }
 
 val groupVal = "io.github.selemba1000"
 val nameVal = "JavaMediaTransportControls"
-val versionVal = "0.0.3"
+val versionVal = "0.0.4"
 
 repositories {
     mavenCentral()
@@ -70,8 +70,12 @@ mavenPublishing{
         }
     }
 
-    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    publishToMavenCentral()
     signAllPublications()
+}
+
+signing {
+    isRequired = false
 }
 
 tasks.javadoc {
